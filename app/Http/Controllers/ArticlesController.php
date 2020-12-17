@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\StoreCommentsRequest;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Models\Comment;
@@ -20,7 +22,7 @@ class ArticlesController extends Controller
         return view('articles.index',['articles'=> Article::where('user_id',auth()->id())->with('comments')->get()]);
     }
 
-    public function store(Request $request)
+    public function store(StoreCommentsRequest $request)
     {
 
 

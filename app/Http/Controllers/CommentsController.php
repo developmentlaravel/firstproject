@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+// use App\Http\Requests\StoreCommentsRequest;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\Comment;
 use App\Models\Article;
 use App\Models\Like;
@@ -10,14 +12,13 @@ use App\Models\User;
 use Illuminate\Support\Fasaded\Auth;
 
 
+
 class CommentsController extends Controller
 {
 
     public function store(Request $request)
     {
-        // $validate = request()->validate([
-        //              'body'=> 'required',
-        //              ]);
+
 
         //  if($request->has('parent_id')>0){
         // dd($request->all());

@@ -29,6 +29,10 @@
                  <label class="label" for="body">Body</label>
                 <div class="control">
                  <textarea class="textarea @error('body') is-invalid  @enderror" type="text" name="body" id="body" ></textarea>
+
+                 {{-- <textarea class="textarea" type="text" name="body" id="body" ></textarea> --}}
+
+
                  @error('body')
                  <p class="help is-danger">{{ $message }}</p>@enderror
                  </div></div>
@@ -96,7 +100,7 @@
 
 
 
-{{--  
+{{--
     <template>
         <span>
             <a href="#" v-if="isFavorited" @click.prevent="unFavorite(post)">
@@ -107,34 +111,34 @@
             </a>
         </span>
     </template>
-    
+
     <script>
         export default {
             props: ['post', 'favorited'],
-    
+
             data: function() {
                 return {
                     isFavorited: '',
                 }
             },
-    
+
             mounted() {
                 this.isFavorited = this.isFavorite ? true : false;
             },
-    
+
             computed: {
                 isFavorite() {
                     return this.favorited;
                 },
             },
-    
+
             methods: {
                 favorite(post) {
                     axios.post('/favorite/'+post)
                         .then(response => this.isFavorited = true)
                         .catch(response => console.log(response.data));
                 },
-    
+
                 unFavorite(post) {
                     axios.post('/unfavorite/'+post)
                         .then(response => this.isFavorited = false)
