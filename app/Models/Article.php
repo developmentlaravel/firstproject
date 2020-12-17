@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Routing\Route;
 
-class Article extends Model
+class Article extends Model 
 {
     use HasFactory;
+
 
     protected $fillable=[];
 
