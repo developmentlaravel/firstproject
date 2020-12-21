@@ -53,6 +53,7 @@ Released   : 20140225
 @yield('contents')
 
  <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
 <script src="{{ asset('js/app.js') }}"></script>
 
 <div id="copyright" class="container">

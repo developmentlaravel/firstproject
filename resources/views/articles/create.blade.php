@@ -41,6 +41,11 @@
                  @error('body')
                  <p class="help is-danger">{{ $message }}</p>@enderror
                  </div></div>
+
+                 {{--  <x-media-library-attachment name="image" />  --}}
+
+
+
                  <div class="field">
                     <label class="label" for="file">Uploadfile</label>
                     <div class="control">

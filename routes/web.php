@@ -15,11 +15,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+// Route::mediaLibrary();
+
 Route::get('/', [App\Http\Controllers\ListarticlesController::class,'index'])->middleware('auth')->name('listarticles.welcome');
 Route::get('/listarticles/{id}', [App\Http\Controllers\ListarticlesController::class,'show'])->name('listarticles.show');
 
 
 Auth::routes();
+
+
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

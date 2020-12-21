@@ -28,10 +28,10 @@ class StoreCommentsRequest extends FormRequest
 
         // dd(request());
         return [
-            'title' =>  'required | max:200 |unique:articles,title ',
+            'title' =>  'required | max:200  ',
             'excerpt'=> 'required  | max:5000 ',
             'body' => [ 'required' , new Uppercase ],
-        ];
+            'image'=> '',        ];
 
     }
 
