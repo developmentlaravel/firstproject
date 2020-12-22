@@ -46,7 +46,7 @@ class ArticlesController extends Controller
         // $request->image->move(public_path('images'),$imagename);
         $article->addMediaFromRequest('image')->toMediaCollection('images');
 
-
+        // $article->addMediaFromRequest('C:\Users\DELL\Desktop\images\download (1).jpg')->toMediaCollection('avator');
 
         // $path = $request
 

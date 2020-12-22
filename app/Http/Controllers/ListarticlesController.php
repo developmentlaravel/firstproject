@@ -24,15 +24,16 @@ class ListarticlesController extends Controller
    {
 // dd($id);
 
-      $article = Article::findOrFail($id);
+      $articleitem = Article::findOrFail($id);
 
-      $articleitem = $article->getMedia('images');
+      $article = $articleitem->getMedia('images');
+    //   dd($article);
 
-      $path = $articleitem[$id]->getUrl();
+      $article =  $article[0]->name  ;
+    //   $article->save();
 
-
-      dd($path);
-    //   dd($articleitem);
+      
+      dd($article);
 
       $comments = Comment::where([
           ['article_id', '=', $id],
@@ -47,6 +48,7 @@ class ListarticlesController extends Controller
     // dd($article);
     return view('listarticles.show',['article'=>$article]);
 }
+
 
 
 

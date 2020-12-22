@@ -6,7 +6,9 @@ use Illuminate\Routing\Route;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\File;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Article extends Model implements HasMedia
 {
@@ -18,16 +20,32 @@ class Article extends Model implements HasMedia
     protected $fillable=[];
 
     protected $guarded = [];
-
-    public function media()
+    public function rejisterMediaConvertion (Media $media = null):void
     {
-        articleItem = Article::getMedia();
-        article = addMediaConvertion()
-        ->
-        ->performToCollection();
+     
+    $this->addMediaConvertion('tumb')
+    ->width(600)
+    ->height(400)
+    ->nonqueue()
+    ->toCollection();
+}
+public function rejisterMediaCollection() :void
+{
+
+    $this->addMediaCollection('only-jpg-file')
+    ->acceptsFile(function(File $file){
+        return $file->mimeType === 'image/jpg';
+    });
+}
+    // public function media()
+    // {
+    //     articleItem = Article::getMedia();
+    //     article = addMediaConvertion()
+    //     ->
+    //     ->performToCollection();
 
 
-    }
+    // }
 
 
 
