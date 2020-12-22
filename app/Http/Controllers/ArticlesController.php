@@ -8,6 +8,7 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class ArticlesController extends Controller
 {
@@ -25,11 +26,13 @@ class ArticlesController extends Controller
     public function store(StoreCommentsRequest $request)
     {
 
-        dd($request->file('image'));
+        // dd($request->file('image'));
 
         $request->request->add(['user_id' => auth()->id()]);
         // $this->validateArticles();
         $article = new Article;
+
+
 
         // $image = request('image');
         // $imagename = time(). '.' . $request->image->getClientOrginalName();
@@ -37,10 +40,12 @@ class ArticlesController extends Controller
 
         // $article->addFromMediaLibraryRequest(request(), 'image')->toMediaCollection('images');
 
-        // dd($article);
-        $imagename = $request->file('image')->getClientOriginalName();
-        $extension = $request->file('image')->extension();
-        $request->image->move(public_path('images'),$imagename);
+
+        // $imagename = $request->file('image')->getClientOriginalName();
+        // $extension = $request->file('image')->extension();
+        // $request->image->move(public_path('images'),$imagename);
+        $article->addMediaFromRequest('image')->toMediaCollection('images');
+
 
 
         // $path = $request
@@ -48,11 +53,16 @@ class ArticlesController extends Controller
 
         $article->title = request('title');
         $article->excerpt = request('excerpt');
+
         $article->body = request('body');
         $article->user_id = auth()->id();
-       
+
+
+
+
         $article->save();
-        return back()->with('succes', 'you have succesfully upload image')->with('image', $imagename);
+        return back()->with('succes', 'you have succesfully upload image');
+        // ->with('image', 'image');
     }
 
 

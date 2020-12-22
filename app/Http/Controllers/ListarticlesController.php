@@ -25,14 +25,23 @@ class ListarticlesController extends Controller
 // dd($id);
 
       $article = Article::findOrFail($id);
+
+      $articleitem = $article->getMedia('images');
+
+      $path = $articleitem[$id]->getUrl();
+
+
+      dd($path);
+    //   dd($articleitem);
+
       $comments = Comment::where([
           ['article_id', '=', $id],
           ['parent_id', '=', 0 ]
       ])->with('replys')->get();
-
+    //   dd($comments);
     //  $article = $article->comments;
 
-
+    // dd($article);
     //   dd($comment);
     // $article = $article->comments;
     // dd($article);

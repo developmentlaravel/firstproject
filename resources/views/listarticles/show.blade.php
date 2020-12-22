@@ -11,9 +11,10 @@
                 <div class='title'>
                     <h2>{{ $article->title }}</h2>
                 </div>
+                {{-- <p><img src="/images/banner.jpg" alt="" class="image image-full" /> </p> --}}
                 <p><img src="/images/banner.jpg" alt="" class="image image-full" /> </p>
                 {{ $article->body }}
-                dd($article);
+                {{-- dd($article); --}}
 
                 <h2>Comments</h2>
                 <hr />
@@ -55,13 +56,13 @@
                             <p>{{ $reply->body }}</p>
                             <div class="comment-list well well-lg">
                                 <string>posted by {{ $comment->user->name }}</string>
-                               
 
 
-                      
+
+
                         <hr />
 
-                    
+
                         <a href="#" id="reply"></a>
                         <h2>reply</h2>
                         <form method="post" action="{{ route('comments') }}">
@@ -72,7 +73,7 @@
                                 <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
                             </div>
                             <div class="form-group">
-                                <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;"
+                                <input type="submit" class="py-0 btn btn-sm btn-outline-danger" style="font-size: 0.8em;"
                                     value="Reply" />
                             </div>
                         </form>
@@ -83,7 +84,7 @@
                         @endif
 
 
-                   
+
                 @endforeach
 
 
@@ -98,7 +99,7 @@
                         --}}
                         <textarea class="form-control" name="body"></textarea>
                         <input type="hidden" name="article_id" value="{{ $article->id }}" />
-                        <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
+                        {{-- <input type="hidden" name="parent_id" value="{{ $comment->id }}" /> --}}
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-warning" value="Add Comment" />

@@ -19,6 +19,15 @@ class Article extends Model implements HasMedia
 
     protected $guarded = [];
 
+    public function media()
+    {
+        articleItem = Article::getMedia();
+        article = addMediaConvertion()
+        ->
+        ->performToCollection();
+
+
+    }
 
 
 
