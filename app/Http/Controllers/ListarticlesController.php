@@ -12,46 +12,37 @@ class ListarticlesController extends Controller
 {
 
 
-   public function index()
+    public function index()
     {
 
-       $article = Article::orderBy('created_at', 'ASC')->get();
-    //    dd($article);
-       return view('listarticles.welcome' ,['articles' => $article]);
-   }
+        $article = Article::orderBy('created_at', 'ASC')->get();
+        //    dd($article);
+        return view('listarticles.welcome', ['articles' => $article]);
+    }
 
-   public function show($id)
-   {
-// dd($id);
+    public function show($id)
+    {
+        // dd($id);
 
-      $articleitem = Article::findOrFail($id);
+        $article = Article::findOrFail($id);
 
-      $article = $articleitem->getMedia('images');
-    //   dd($article);
+        // $articles = $article->getMedia('images');
 
-      $article =  $article[0]->name  ;
-    //   $article->save();
+         
+        //    $article[0]->name = 'TREE'  ;
+        //   $article[0]->save();
 
       
-      dd($article);
+        //   dd($article);
 
-      $comments = Comment::where([
-          ['article_id', '=', $id],
-          ['parent_id', '=', 0 ]
-      ])->with('replys')->get();
-    //   dd($comments);
-    //  $article = $article->comments;
+        $comments = Comment::where([
+            ['article_id', '=', $id],
+            ['parent_id', '=', 0]
+        ])->with('replys')->get();
+        //   dd($comments);
+        //  $article = $article->comments;
 
-    // dd($article);
-    //   dd($comment);
-    // $article = $article->comments;
-    // dd($article);
-    return view('listarticles.show',['article'=>$article]);
-}
-
-
-
-
-
-
+        // dd($article);
+        return view('listarticles.show', ['article' => $article]);
+    }
 }

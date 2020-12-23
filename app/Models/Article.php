@@ -20,16 +20,19 @@ class Article extends Model implements HasMedia
     protected $fillable=[];
 
     protected $guarded = [];
-    public function rejisterMediaConvertion (Media $media = null):void
+
+
+    public function rejisterMediaConvertions (Media $media = null):void
     {
-     
+
     $this->addMediaConvertion('tumb')
     ->width(600)
     ->height(400)
-    ->nonqueue()
-    ->toCollection();
+    ->sharpen(10);
+    // ->nonqueue()
+    
 }
-public function rejisterMediaCollection() :void
+public function rejisterMediaCollections() :void
 {
 
     $this->addMediaCollection('only-jpg-file')

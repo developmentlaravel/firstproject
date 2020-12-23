@@ -30,7 +30,7 @@ class ArticlesController extends Controller
 
         $request->request->add(['user_id' => auth()->id()]);
         // $this->validateArticles();
-        $article = new Article;
+        $articles = new Article;
 
 
 
@@ -44,12 +44,12 @@ class ArticlesController extends Controller
         // $imagename = $request->file('image')->getClientOriginalName();
         // $extension = $request->file('image')->extension();
         // $request->image->move(public_path('images'),$imagename);
-        $article->addMediaFromRequest('image')->toMediaCollection('images');
+        $article = $articles->addMediaFromRequest('image')->toMediaCollection('images');
 
         // $article->addMediaFromRequest('C:\Users\DELL\Desktop\images\download (1).jpg')->toMediaCollection('avator');
 
         // $path = $request
-
+        // dd($article);
 
         $article->title = request('title');
         $article->excerpt = request('excerpt');
@@ -57,10 +57,11 @@ class ArticlesController extends Controller
         $article->body = request('body');
         $article->user_id = auth()->id();
 
-
+        // dd($article);
 
 
         $article->save();
+     
         return back()->with('succes', 'you have succesfully upload image');
         // ->with('image', 'image');
     }
