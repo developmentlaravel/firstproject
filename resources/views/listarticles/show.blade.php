@@ -6,14 +6,14 @@
             <div id='content'>
 
 
-                {{--  dd($article);  --}}
+                 {{-- dd($article); --}}
 
                 <div class='title'>
                     <h2>{{ $article->title }}</h2>
                 </div>
-                {{--  dd($article);  --}}
+                 {{-- dd($article); --}}
 
-                <p><img src="/images/banner.jpg" alt="" class="image image-full" /> </p>
+                {{-- <p><img src="/images/banner.jpg" alt="" class="image image-full" /> </p> --}}
                {{--  {{ dd($article->getMedia('images')[0]->getFullUrl()) }}  --}}
                 <p><img src={{ $article->getMedia('images')->first()->getFullUrl() }} alt="" class="image image-full" /> </p>
                 {{ $article->body }}

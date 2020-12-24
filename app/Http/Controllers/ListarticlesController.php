@@ -25,14 +25,13 @@ class ListarticlesController extends Controller
         // dd($id);
 
         $article = Article::findOrFail($id);
+// dd($article);        // $articles = $article->getMedia('images');
 
-        // $articles = $article->getMedia('images');
 
-         
         //    $article[0]->name = 'TREE'  ;
         //   $article[0]->save();
 
-      
+
         //   dd($article);
 
         $comments = Comment::where([

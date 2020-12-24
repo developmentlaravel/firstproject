@@ -27,10 +27,35 @@ class ArticlesController extends Controller
     {
 
         // dd($request->file('image'));
-
+// dd($request);
         $request->request->add(['user_id' => auth()->id()]);
-        // $this->validateArticles();
-        $articles = new Article;
+        // $articles = new Article;
+// dd(new Article);
+
+// $articles = Article::create($request(['title' , 'excerpt', 'body']));
+
+        //  $articles = Article::create(
+        //  [
+        //      'title' => $request('title'),
+        //      'excerpt' => $request('excerpt'),
+        //      'body' => $request('body')
+        //  ]);
+
+        $articles = Article::create($request->only(
+             [
+                 'title',
+                 'excerpt' ,
+                 'body' ,
+                 'user_id'
+             ]));
+
+            //  $articles = Article::create($request(
+            //     [
+            //         'title' => input('title'),
+            //         'excerpt' => input('excerpt'),
+            //         'body'=> input('body') ,
+            //         'user_id' => input('body')
+            //     ]));
 
 
 
@@ -51,17 +76,21 @@ class ArticlesController extends Controller
         // $path = $request
         // dd($article);
 
-        $article->title = request('title');
-        $article->excerpt = request('excerpt');
 
-        $article->body = request('body');
-        $article->user_id = auth()->id();
+
+
+        // $article->title = request('title');
+
+        // $article->excerpt = request('excerpt');
+
+        // $article->body = request('body');
+        // $article->user_id = auth()->id();
 
         // dd($article);
 
-
-        $article->save();
-     
+        // dd($article->get());
+        // $article->save();
+// dd($article);
         return back()->with('succes', 'you have succesfully upload image');
         // ->with('image', 'image');
     }
@@ -81,13 +110,13 @@ class ArticlesController extends Controller
     }
 
 
-    protected function validateArticles()
-    {
-        request()->validate([
-            'title' => 'required',
-            'excerpt' => 'required',
-            'body' => 'required',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:1250'
-        ]);
-    }
+    // protected function validateArticles()
+    // {
+    //     request()->validate([
+    //         'title' => 'required',
+    //         'excerpt' => 'required',
+    //         'body' => 'required',
+    //         'image' => 'required|image|mimes:jpg,jpeg,png|max:1250'
+    //     ]);
+    // }
 }

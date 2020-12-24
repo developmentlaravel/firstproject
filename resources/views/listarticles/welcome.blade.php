@@ -8,8 +8,8 @@
      <div id="wrapper">
         <div id="page" class="container">
 
-            
-                 
+
+
             <div id="content">
 
                 @foreach($articles as $article)
@@ -18,13 +18,14 @@
                     {{-- <!-- <h2><a href="{{rout('article.show')}}">{{articles->title}}</a></h2> --> --}}
 
                 <p><img src="images/banner.jpg" alt="" class="image image-full" /> </p>
+                {{-- <p><img src="$article->getMedia('images')->" alt="" class="image image-full" /> </p> --}}
                 {{ $article->body }}
                  </div>
                  @endforeach
 
-                 
-                 
-              
+
+
+
             {{--  </div>
                  <div id="sidebar">
                 <ul class="style1">
@@ -62,7 +63,7 @@
                     </div>
                 </div>  --}}
             </div>
-  
+
         </div>
     </div>
 @endsection
