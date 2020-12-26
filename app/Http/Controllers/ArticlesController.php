@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Comment;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Collection;
 
 class ArticlesController extends Controller
 {
@@ -27,12 +28,12 @@ class ArticlesController extends Controller
     {
 
         // dd($request->file('image'));
-// dd($request);
+        // dd($request);
         $request->request->add(['user_id' => auth()->id()]);
         // $articles = new Article;
-// dd(new Article);
+        // dd(new Article);
 
-// $articles = Article::create($request(['title' , 'excerpt', 'body']));
+        // $articles = Article::create($request(['title' , 'excerpt', 'body']));
 
         //  $articles = Article::create(
         //  [
@@ -42,20 +43,21 @@ class ArticlesController extends Controller
         //  ]);
 
         $articles = Article::create($request->only(
-             [
-                 'title',
-                 'excerpt' ,
-                 'body' ,
-                 'user_id'
-             ]));
+            [
+                'title',
+                'excerpt',
+                'body',
+                'user_id'
+            ]
+        ));
 
-            //  $articles = Article::create($request(
-            //     [
-            //         'title' => input('title'),
-            //         'excerpt' => input('excerpt'),
-            //         'body'=> input('body') ,
-            //         'user_id' => input('body')
-            //     ]));
+        //  $articles = Article::create($request(
+        //     [
+        //         'title' => input('title'),
+        //         'excerpt' => input('excerpt'),
+        //         'body'=> input('body') ,
+        //         'user_id' => input('body')
+        //     ]));
 
 
 
@@ -69,7 +71,95 @@ class ArticlesController extends Controller
         // $imagename = $request->file('image')->getClientOriginalName();
         // $extension = $request->file('image')->extension();
         // $request->image->move(public_path('images'),$imagename);
-        $article = $articles->addMediaFromRequest('image')->toMediaCollection('images');
+        // $image = $request->file('image');
+        // // dd($request->file('image'));
+        // foreach($request->file('image') as $image){
+        //  $articles->addMultipleMediaFromRequest('images')->toMediaCollection('images');
+        // }
+
+        // $adders = collect($request->file('image'));
+        // dd($adders);
+
+        //  foreach($request->file('image', []) as $image){
+        //     //  dd($image);
+        //     $media = $articles->addMedia('image');
+        //     // $media = $articles->addMedia(['image']);
+        //     // dd($media);
+        // }
+        // // dd($articles);
+        // $article =  $media->toMediaCollection('images');
+
+        // dd($article);
+        // dd($request->hasFile('image'));
+
+
+        if($request->hasFile('image')){
+        $files = $articles->addMultipleMediaFromRequest(['image'])->each(function ($file){
+            // dd($files);
+            $file->toMediaCollection('images');
+        });
+
+        }
+
+
+
+
+
+
+
+
+
+        // if($request->hasFile('image')){
+        //     // dd($request->hasFile('image'));
+        //     $articleadders = $articles->addMultipleMediaFromRequest('articleadder')->toMediaCollection('images');
+        // // dd($articleadders);
+        // }
+
+//    dd($articleadders);
+
+
+
+
+
+
+
+
+        // $article = $articles->addMultipleMediaFromRequest($adders)->toMediaCollection('images');
+        // dd($article);
+
+        // $images = $request->file('image', []);
+        // dd($images);
+        // $images = $articles->each(function ($image){
+        //     //  dd($image);
+        //     article = $articles->addMultipleMediaFromRequest($image)->toMediaCollection('images');
+        //     // dd($article);
+        // });
+
+        // $article
+
+        // dd($article);
+        // dd($request->file(['image']));
+        // $article = $articles->addMultipleMediaFromRequest($request->file('image'))->toMediaCollection('images');
+
+        // $adders = collect($articles->addMultipleMediaFromRequest($request->file('image')));
+        // $adders->each(function ($adder){
+
+
+        //     $articles->each(function ($articl){
+        //         $article = $articl->addMultipleMediaFromRequest('image')->toMediaCollection('images');
+        // });
+
+
+        // $images = $request->file('image');
+        // // dd($images);
+        // foreach ($images as $image) {
+        //     // dd($image);
+        //    $article = $articles->addMultipleMediaFromRequest('image')->toMediaCollection('images');
+        // }
+
+
+
+
 
         // $article->addMediaFromRequest('C:\Users\DELL\Desktop\images\download (1).jpg')->toMediaCollection('avator');
 
@@ -90,7 +180,7 @@ class ArticlesController extends Controller
 
         // dd($article->get());
         // $article->save();
-// dd($article);
+        // dd($article);
         return back()->with('succes', 'you have succesfully upload image');
         // ->with('image', 'image');
     }

@@ -31,7 +31,7 @@ class StoreCommentsRequest extends FormRequest
             'title' =>  'required | max:200  ',
             'excerpt'=> 'required  | max:5000 ',
             'body' => [ 'required' , new Uppercase ],
-            'image'=> 'required|mimes:jpeg,png,bmp,jpg',
+            // 'image'=> 'required|mimes:jpeg,png,bmp,jpg|image',
              ];
 
     }

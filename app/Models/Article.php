@@ -30,16 +30,16 @@ class Article extends Model implements HasMedia
     ->height(400)
     ->sharpen(10);
     // ->nonqueue()
-    
-}
-public function rejisterMediaCollections() :void
-{
 
-    $this->addMediaCollection('only-jpg-file')
-    ->acceptsFile(function(File $file){
-        return $file->mimeType === 'image/jpg';
-    });
 }
+// public function rejisterMediaCollections() :void
+// {
+
+//     $this->addMediaCollection('only-jpg-file')
+//     ->acceptsFile(function(File $file){
+//         return $file->mimeType === 'image/jpg';
+//     });
+// }
     // public function media()
     // {
     //     articleItem = Article::getMedia();

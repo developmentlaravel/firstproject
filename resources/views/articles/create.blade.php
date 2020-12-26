@@ -8,16 +8,16 @@
 <div id='page' class='container'>
 
     @if($message = Session::get('succes') )
-    
+
         <div class = "alert alert-succes alert-blo">
             {{--  <button class = "close">close</button>  --}}
             <storag>{{  $message }}</storag>
-        
+
         </div>
-   
+
     @endif
 
-    <form  method="POST" action="/articles" enctype="multipart/form-data">
+    <form  class="form-horizontal" method="POST" action="/articles" enctype="multipart/form-data">
         @csrf
 
              <div class="field">
@@ -49,7 +49,7 @@
                  <div class="field">
                     <label class="label" for="file">Uploadfile</label>
                     <div class="control">
-                    <input class="input @error('image') is-danger @enderror" type="file" name="image" id="image" >
+                    <input class="input @error('image') is-danger @enderror" type="file" name="image[]" id="image" multiple >
                     @error('image')
                     <p class="help is-danger">{{ $message }}</p>@enderror
                 </div></div>
