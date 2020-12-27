@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Article;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -24,6 +25,14 @@ Route::get('/listarticles/{id}', [App\Http\Controllers\ListarticlesController::c
 Auth::routes();
 
 
+Route::post('/tokens/create' , function(Request $request)
+{
+$tokens = $request->user()->createToken($request->token_name);
+
+
+return ['token' => $token->plainTextToken];
+
+});
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

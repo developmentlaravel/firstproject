@@ -8,10 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use laravel\sanctum\HasApiToken;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiToken, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -64,4 +65,12 @@ class User extends Authenticatable
     // {
     //     return $this->hasToMany(Conversation::class);
     // }
+
+
+    // public function rejisterMediaCollections(): void
+    // {
+    //     $this->addMediaCollection('avator')
+    //     ->singleFile();
+    // }
+
 }

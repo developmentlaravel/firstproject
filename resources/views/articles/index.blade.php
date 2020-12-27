@@ -12,21 +12,29 @@
 
              <div id="content">
                 <div class="title">
-                
+
                  {{-- <h2><a href="/articles/{{ $article->id }}">{{$article->title}}</a></h2> --}}
                   {{--  <h2><a href={{ route('articles.show', $article->id) }}>{{ $article->title }}</a></h2>  --}}
                     <h2>{{ $article->title }}</h2>
                 </div>
-                      <p><img src="/images/banner.jpg" alt="" class="image image-full" /> </p>
+                      {{-- <p><img src="/images/banner.jpg" alt="" class="image image-full" /> </p> --}}
+                      {{-- dd($article->getFirstMediaUrl('image')); --}}
+                      {{-- dd($article->getMedia('image')[0]->getFullUrl); --}}
+
+
+                      @foreach ($article->getMedia('images') as $image)
                      
+                      <p><img src={{ $image->getFullUrl() }} alt="" class="image image-full" /> </p>
+                  @endforeach
+
                  {{$article->excerpt}}
                  <br><br>
-                
+
 
                  <h1>Comment</h1>
                  <hr/>
                  @forelse($article->comments as $comment)
-                
+
            <h1>{{  $comment->title }}</h1>
            <div class="comment-list well well-lg">
            <p class = "muted">posted by {{ $comment->user->name }}  | creat at: {{ $comment->created_at }}</p>
@@ -40,7 +48,7 @@
            {{-- @incloud($loop->last); --}}
            @empty
            <p>not existing  comment</p>
-             
+
           @endforelse
 
   @endforeach

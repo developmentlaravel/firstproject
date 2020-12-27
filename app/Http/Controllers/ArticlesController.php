@@ -18,7 +18,12 @@ class ArticlesController extends Controller
     public function index()
     {
 
+      
 
+
+        // dd(Article::where('user_id', auth()->id())->first());
+        // dd(Article::where('user_id', auth()->id())->first()->getMedia('images'));
+        // dd(Article::first());
         // $article = Article::where('user_id',auth()->id())->with('comments')->get();
         // dd($article);
         return view('articles.index', ['articles' => Article::where('user_id', auth()->id())->with('comments')->get()]);
