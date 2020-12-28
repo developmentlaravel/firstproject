@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 
 // Route::mediaLibrary();
 
-Route::get('/', [App\Http\Controllers\ListarticlesController::class,'index'])->middleware('auth')->name('listarticles.welcome');
+Route::get('/', [App\Http\Controllers\ListarticlesController::class,'index'])->name('listarticles.welcome')->middleware('auth');
 Route::get('/listarticles/{id}', [App\Http\Controllers\ListarticlesController::class,'show'])->name('listarticles.show');
 
 
@@ -37,7 +37,7 @@ return ['token' => $token->plainTextToken];
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/articles', [App\Http\Controllers\ArticlesController::class,'index'])->name('articles.index')->middleware('auth');
+Route::middleware('auth:sanctum')->get('/articles', [App\Http\Controllers\ArticlesController::class,'index'])->name('articles.index')->middleware('auth:sanctum');
 Route::POST('/articles', [App\Http\Controllers\ArticlesController::class,'store'])->name('articles');
 Route::get('/articles/create', [App\Http\Controllers\ArticlesController::class,'create']);
 // Route::get('/articles/{id}', [App\Http\Controllers\ArticlesController::class,'show'])->name('articles.show');
@@ -51,7 +51,7 @@ Route::POST('/commentslike', [App\Http\Controllers\CommentsController::class,'li
 
 
 
-
+Route::get('/singlepage' , [App\Http\Controllers\ArticlesController::class , 'view']);
 
 // Route::post('/likecomment/{comment}', [App\Http\Controllers\CommentsController::class,'likeComment']);
 // Route::post('/dislikecomment/{comment}', [App\Http\Controllers\CommentsController::class,'disLikeComment']);

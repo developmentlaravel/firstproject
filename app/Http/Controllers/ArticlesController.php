@@ -13,12 +13,13 @@ use Illuminate\Support\Collection;
 
 class ArticlesController extends Controller
 {
+  
 
 
     public function index()
     {
 
-      
+
 
 
         // dd(Article::where('user_id', auth()->id())->first());
@@ -201,7 +202,8 @@ class ArticlesController extends Controller
 
     public function create()
     {
-        return view('articles.create');
+
+         return view('articles.create');
     }
 
 

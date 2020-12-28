@@ -8,11 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
-use laravel\sanctum\HasApiToken;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiToken, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -39,8 +39,8 @@ class User extends Authenticatable
      * The attributes that should be cast to native types.
      *
      * @var array
-     * 
-     * 
+     *
+     *
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
@@ -60,7 +60,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Like::class, 'likes' , 'user_id', 'comment_id')->withTimeStamps();
     }
-    
+
     // public function conversations()
     // {
     //     return $this->hasToMany(Conversation::class);

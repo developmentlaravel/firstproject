@@ -40,4 +40,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    public function login()
+    {
+        return  $request->user()->createToken($request->token_name , ['articles:create'] )->plainTextToken;
+
+// request()->user()->tokens()->where('id' , $id)->delete();
+    }
 }
