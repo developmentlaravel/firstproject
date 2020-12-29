@@ -26,24 +26,15 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-
-    protected $redirectTo = '/';
-
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-    }
-    public function login()
-    {
-        return  $request->user()->createToken($request->token_name , ['articles:create'] )->plainTextToken;
-
-// request()->user()->tokens()->where('id' , $id)->delete();
     }
 }

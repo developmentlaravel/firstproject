@@ -9,6 +9,7 @@
 
 
 
+
             <div id="content">
 
                 @foreach ($articles as $article)

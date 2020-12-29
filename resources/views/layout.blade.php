@@ -26,6 +26,49 @@ Released   : 20140225
 
 </head>
 <body>
+
+
+
+
+    {{-- <div class="relative flex justify-center min-h-screen bg-gray-100 items-top dark:bg-gray-900 sm:items-center sm:pt-0">
+        @if (Route::has('login'))
+            <div class="fixed top-0 right-0 hidden px-6 py-4 sm:block">
+                @auth
+                    <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
+                @else
+                    <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
+
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                    @endif
+                @endif
+            </div>
+       @endif
+        </div> --}}
+
+
+{{-- <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+
 <div id="header-wrapper">
     <div id="header" class="container">
         <div id="logo">
@@ -53,7 +96,7 @@ Released   : 20140225
 @yield('contents')
 
  <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- 
+
 <script src="{{ asset('js/app.js') }}"></script>
 
 <div id="copyright" class="container">
