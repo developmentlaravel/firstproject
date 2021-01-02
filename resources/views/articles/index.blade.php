@@ -23,7 +23,7 @@
 
 
                       @foreach ($article->getMedia('images') as $image)
-                     
+
                       <p><img src={{ $image->getFullUrl() }} alt="" class="image image-full" /> </p>
                   @endforeach
 

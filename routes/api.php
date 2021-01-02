@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user' , function(Request $request){
      return $request->user();
 });
+// Route::apiResource('articles' , 'ListarticlesController');
+// Route::apiResource('articles' , 'ArticlesController');
 // Route::middleware('auth:sanctum')->get('/user/logout' , function (Request $request) {
-//     
+//
 // });

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 
 // Route::mediaLibrary();
 
-Route::get('/', [App\Http\Controllers\ListarticlesController::class,'index'])->name('listarticles.welcome')->middleware('auth');
+Route::get('/', [App\Http\Controllers\ListarticlesController::class,'index'])->name('listarticles.welcome');
 Route::get('/listarticles/{id}', [App\Http\Controllers\ListarticlesController::class,'show'])->name('listarticles.show');
 
 
@@ -37,7 +37,9 @@ return ['token' => $token->plainTextToken];
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::middleware('auth:sanctum')->get('/articles', [App\Http\Controllers\ArticlesController::class,'index'])->name('articles.index')->middleware('auth:sanctum');
+// Route::middleware('auth:sanctum')->get('/articles', [App\Http\Controllers\ArticlesController::class,'index'])->name('articles.index')->middleware('auth:sanctum');
+Route::get('/articles', [App\Http\Controllers\ArticlesController::class,'index'])->name('articles.index');
+
 Route::POST('/articles', [App\Http\Controllers\ArticlesController::class,'store'])->name('articles');
 Route::get('/articles/create', [App\Http\Controllers\ArticlesController::class,'create']);
 // Route::get('/articles/{id}', [App\Http\Controllers\ArticlesController::class,'show'])->name('articles.show');

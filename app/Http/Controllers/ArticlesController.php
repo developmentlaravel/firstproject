@@ -13,7 +13,7 @@ use Illuminate\Support\Collection;
 
 class ArticlesController extends Controller
 {
-  
+
 
 
     public function index()
@@ -26,8 +26,10 @@ class ArticlesController extends Controller
         // dd(Article::where('user_id', auth()->id())->first()->getMedia('images'));
         // dd(Article::first());
         // $article = Article::where('user_id',auth()->id())->with('comments')->get();
-        // dd($article);
+        // dd(Article::orderBy('created_at', 'ASC')->get());
         return view('articles.index', ['articles' => Article::where('user_id', auth()->id())->with('comments')->get()]);
+
+        //   return view('articles.index', ['articles' => Article::orderBy('created_at', 'ASC')->get()]);
     }
 
     public function store(StoreCommentsRequest $request)
